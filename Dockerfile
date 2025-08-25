@@ -21,27 +21,22 @@ FROM node:18-alpine AS runner
 
 WORKDIR /app
 
-# Use minimal permissions
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-# Copy only necessary files from builder
+# Copy built files and dependencies
 COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
 COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/package.json ./package.json
+COPY --from=builder --chown=nextjs:nodejs /app/package-lock.json ./package-lock.json  # ✅ Add this!
 
-# Switch to non-root user
 USER nextjs:nodejs
 
 # Install only production dependencies
-# (if you have separate devDependencies)
 RUN npm ci --only=production
 
-# Expose port
 EXPOSE 3000
 
-# Set production environment
 ENV NODE_ENV=production
 
-# Run the production server
 CMD ["npm", "start"]
