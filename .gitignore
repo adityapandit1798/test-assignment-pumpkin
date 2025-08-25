@@ -3,6 +3,8 @@
 # dependencies
 /node_modules
 /.pnp
+/aws
+
 .pnp.*
 .yarn/*
 !.yarn/patches
@@ -39,3 +41,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+
+*.pemawscliv2.zip
+.terraform/
