@@ -24,11 +24,11 @@ WORKDIR /app
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
 
-# Copy built files
+# Copy built Next.js files
 COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
 COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/package.json ./package.json
-COPY --from=builder --chown=nextjs:nodejs /app/package-lock.json ./package-lock.json  # <-- No inline comment or move it above
+COPY --from=builder --chown=nextjs:nodejs /app/package-lock.json ./package-lock.json
 
 USER nextjs:nodejs
 
