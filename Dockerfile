@@ -19,20 +19,24 @@ RUN npm run build
 # === STAGE 2: Production Runtime ===
 FROM node:18-alpine AS runner
 
+# Create app directory and set ownership
+RUN addgroup --system --gid 1001 nodejs && \
+    adduser --system --uid 1001 nextjs && \
+    mkdir -p /app && \
+    chown nextjs:nodejs /app
+
 WORKDIR /app
 
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
-
-# Copy built Next.js files
+# Copy files as root, but ensure they're accessible
 COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
 COPY --from=builder --chown=nextjs:nodejs /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/package.json ./package.json
 COPY --from=builder --chown=nextjs:nodejs /app/package-lock.json ./package-lock.json
 
+# Switch to non-root user
 USER nextjs:nodejs
 
-# Install only production dependencies
+# Now this will work — user owns /app
 RUN npm ci --only=production
 
 EXPOSE 3000
