@@ -115,7 +115,6 @@ Thank you for the opportunity — I look forward to discussing this further!
 | 6 | ![Terraform State](screenshots/Screenshot_from_2025-08-26_14-09-07.png) |
 | 7 | ![Next.js App](screenshots/Screenshot_from_2025-08-26_14-09-28.png) |
 | 8 | ![Prometheus Targets](screenshots/Screenshot_from_2025-08-26_14-10-14.png) |
-| 9 | ![Prometheus Graph](screenshots/Screenshot_from_2025-08-26_14-26-17.png) |
 
 Best regards,  
 **Aditya Pandit**  
