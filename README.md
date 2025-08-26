@@ -107,15 +107,15 @@ Thank you for the opportunity — I look forward to discussing this further!
 
 | Description | Screenshot |
 |-----------|------------|
-| 1 | ![Terraform Apply](screenshots/Screenshot_from_2025-08-26_14-04-27.png) |
+| 1| ![Terraform Apply](screenshots/Screenshot_from_2025-08-26_14-04-27.png) |
 | 2 | ![Docker PS](screenshots/Screenshot_from_2025-08-26_14-05-44.png) |
-| 3 | ![GitHub Webhook](screenshots/Screenshot_from_2025-08-26_14-05-50.png) |
-| 4 | ![Jenkins Build](screenshots/Screenshot_from_2025-08-26_14-08-34.png) |
+| 3| ![GitHub Webhook](screenshots/Screenshot_from_2025-08-26_14-06-50.png) |
+| 4 | ![Jenkins Build](screenshots/Screenshot_from_2025-08-26_14-07-34.png) |
 | 5 | ![Docker Hub](screenshots/Screenshot_from_2025-08-26_14-08-23.png) |
 | 6 | ![Terraform State](screenshots/Screenshot_from_2025-08-26_14-09-07.png) |
-| 7 | ![Next.js App](screenshots/Screenshot_from_2025-08-26_14-08-28.png) |
+| 7 | ![Next.js App](screenshots/Screenshot_from_2025-08-26_14-09-28.png) |
 | 8 | ![Prometheus Targets](screenshots/Screenshot_from_2025-08-26_14-10-14.png) |
-| Prometheus Graph | ![Prometheus Graph](screenshots/Screenshot_from_2025-08-26_14-08-28.png) |
+| 9 | ![Prometheus Graph](screenshots/Screenshot_from_2025-08-26_14-26-17.png) |
 
 Best regards,  
 **Aditya Pandit**  
