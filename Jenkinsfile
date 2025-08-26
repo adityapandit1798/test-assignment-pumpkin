@@ -1,10 +1,10 @@
 // Jenkinsfile
 
 pipeline {
-    agent { label 'docker-node' }  // Run everything on remote Docker host
+    agent any
 
     environment {
-        DOCKERHUB_USERNAME = 'adityapandit1798'  // ← Replace if different
+        DOCKERHUB_USERNAME = 'adityapandit1798'
         DOCKERHUB_REPO     = 'adityapandit1798/nextjs-app'
         IMAGE_TAG          = 'latest'
     }
@@ -12,71 +12,51 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                script {
-                    echo "📦 Checking out code..."
-                    checkout scm
-                }
+                checkout scm
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                script {
-                    echo "🏗️  Building Docker image: ${DOCKERHUB_REPO}:${IMAGE_TAG}"
-                    sh 'docker build -t ${DOCKERHUB_REPO}:${IMAGE_TAG} .'
-                }
+                sh 'docker build -t ${DOCKERHUB_REPO}:${IMAGE_TAG} .'
             }
         }
 
         stage('Login to DockerHub') {
             steps {
-                script {
-                    echo "🔐 Logging in to DockerHub..."
-                    withCredentials([usernamePassword(
-                        credentialsId: 'dockerhub-credentials',
-                        usernameVariable: 'DOCKER_USER',
-                        passwordVariable: 'DOCKER_PASS'
-                    )]) {
-                        sh 'echo "${DOCKER_PASS}" | docker login -u "${DOCKER_USER}" --password-stdin'
-                    }
+                withCredentials([usernamePassword(
+                    credentialsId: 'dockerhub-credentials',
+                    usernameVariable: 'DOCKER_USER',
+                    passwordVariable: 'DOCKER_PASS'
+                )]) {
+                    sh 'echo "${DOCKER_PASS}" | docker login -u "${DOCKER_USER}" --password-stdin'
                 }
             }
         }
 
-        stage('Push Docker Image') {
+        stage('Push Image') {
             steps {
-                script {
-                    echo "📤 Pushing image to DockerHub..."
-                    sh 'docker push ${DOCKERHUB_REPO}:${IMAGE_TAG}'
-                }
+                sh 'docker push ${DOCKERHUB_REPO}:${IMAGE_TAG}'
             }
         }
 
         stage('Deploy Container') {
             steps {
-                script {
-                    echo "🚀 Deploying container..."
-                    sh '''
-                        docker stop nextjs-app || true
-                        docker rm nextjs-app || true
-                        docker run -d -p 3000:3000 --name nextjs-app \
-                            --restart unless-stopped \
-                            ${DOCKERHUB_REPO}:${IMAGE_TAG}
-                    '''
-                }
+                sh '''
+                    docker stop nextjs-app || true
+                    docker rm nextjs-app || true
+                    docker run -d -p 3000:3000 --name nextjs-app --restart unless-stopped ${DOCKERHUB_REPO}:${IMAGE_TAG}
+                '''
             }
         }
     }
 
     post {
         success {
-            echo "✅ Deployment successful! App running at http://<your-ec2-ip>:3000"
+            echo '✅ Deployment successful!'
         }
         failure {
-            echo "❌ Deployment failed. Check logs in Jenkins."
-        }
-        always {
-            // Optional: Send notification
+            echo '❌ Deployment failed!'
         }
     }
 }
