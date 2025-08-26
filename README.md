@@ -107,14 +107,14 @@ Thank you for the opportunity — I look forward to discussing this further!
 
 | Description | Screenshot |
 |-----------|------------|
-| GitHub Webhook Configured | ![Terraform Apply](screenshots/Screenshot_from_2025-08-26_14-04-27.png) |
-| Docker Containers Running | ![Docker PS](screenshots/Screenshot_from_2025-08-26_14-05-44.png) |
-| GitHub Webhook Configured | ![GitHub Webhook](screenshots/Screenshot_from_2025-08-26_14-05-50.png) |
-| Jenkins Pipeline Success | ![Jenkins Build](screenshots/Screenshot_from_2025-08-26_14-08-34.png) |
-| Docker Hub Repository | ![Docker Hub](screenshots/Screenshot_from_2025-08-26_14-08-23.png) |
-| Terraform State List | ![Terraform State](screenshots/Screenshot_from_2025-08-26_14-09-07.png) |
-| Next.js App Running | ![Next.js App](screenshots/Screenshot_from_2025-08-26_14-08-28.png) |
-| Prometheus Targets | ![Prometheus Targets](screenshots/Screenshot_from_2025-08-26_14-10-14.png) |
+| 1 | ![Terraform Apply](screenshots/Screenshot_from_2025-08-26_14-04-27.png) |
+| 2 | ![Docker PS](screenshots/Screenshot_from_2025-08-26_14-05-44.png) |
+| 3 | ![GitHub Webhook](screenshots/Screenshot_from_2025-08-26_14-05-50.png) |
+| 4 | ![Jenkins Build](screenshots/Screenshot_from_2025-08-26_14-08-34.png) |
+| 5 | ![Docker Hub](screenshots/Screenshot_from_2025-08-26_14-08-23.png) |
+| 6 | ![Terraform State](screenshots/Screenshot_from_2025-08-26_14-09-07.png) |
+| 7 | ![Next.js App](screenshots/Screenshot_from_2025-08-26_14-08-28.png) |
+| 8 | ![Prometheus Targets](screenshots/Screenshot_from_2025-08-26_14-10-14.png) |
 | Prometheus Graph | ![Prometheus Graph](screenshots/Screenshot_from_2025-08-26_14-08-28.png) |
 
 Best regards,  
