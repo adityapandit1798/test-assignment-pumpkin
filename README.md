@@ -107,7 +107,7 @@ Thank you for the opportunity — I look forward to discussing this further!
 
 | Description | Screenshot |
 |-----------|------------|
-| Terraform Apply Output | ![Terraform Apply](screenshots/Screenshot_from_2025-08-26_14-04-27.png) |
+| GitHub Webhook Configured | ![Terraform Apply](screenshots/Screenshot_from_2025-08-26_14-04-27.png) |
 | Docker Containers Running | ![Docker PS](screenshots/Screenshot_from_2025-08-26_14-05-44.png) |
 | GitHub Webhook Configured | ![GitHub Webhook](screenshots/Screenshot_from_2025-08-26_14-05-50.png) |
 | Jenkins Pipeline Success | ![Jenkins Build](screenshots/Screenshot_from_2025-08-26_14-08-34.png) |
