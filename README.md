@@ -48,6 +48,54 @@ I am pleased to submit my completed DevOps assignment, where I successfully depl
   - Log rotation enabled (`max-size=100m`, `max-file=3`)
   - Logs accessible at `/home/ubuntu/monitoring/logs`
 
+
+```bash
+docker run -d \
+  --name node-exporter \
+  --restart unless-stopped \
+  -p 9100:9100 \
+  -v "/proc:/host/proc:ro" \
+  -v "/sys:/host/sys:ro" \
+  -v "/:/rootfs:ro" \
+  quay.io/prometheus/node-exporter:latest \
+  --path.procfs=/host/proc \
+  --path.sysfs=/host/sys \
+  --collector.filesystem.ignored-mount-points "^/(sys|proc|dev|host|etc)($|/)"
+```
+
+
+##  `prometheus.yml` Config File
+
+```yaml
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'node'
+    static_configs:
+      - targets: ['172.31.27.119:9100']  # EC2 private IP
+```
+
+
+## Run Prometheus Container
+
+```bash
+docker run -d \
+  --name prometheus \
+  --restart unless-stopped \
+  -p 9090:9090 \
+  -v /home/ubuntu/monitoring/prometheus:/etc/prometheus \
+  -v /home/ubuntu/monitoring/data:/prometheus \
+  --add-host="host.docker.internal:172.31.27.119" \
+  --log-driver=local \
+  --log-opt max-size=100m \
+  prom/prometheus:latest \
+  --config.file=/etc/prometheus/prometheus.yml \
+  --storage.tsdb.path=/prometheus \
+  --web.console.libraries=/etc/prometheus/consoles \
+  --web.console.templates=/etc/prometheus/consoles
+```
+
 ---
 
 ### 🔐 **5. Security & Best Practices**
